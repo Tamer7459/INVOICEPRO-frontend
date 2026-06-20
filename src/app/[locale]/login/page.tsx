@@ -26,7 +26,7 @@ export default function LoginPage() {
   }, [router, searchParams]);
 
   const handleGoogleLogin = () => {
-    window.location.href = "/api/auth/google";
+    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/google`;
   };
 
   const handleDemoLogin = async () => {
