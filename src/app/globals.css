@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --foreground: 15 23 42;
+    --border: 226 232 240;
+    --primary: 37 99 235;
+    --muted: 241 245 249;
+  }
+  .dark {
+    --background: 15 23 42;
+    --foreground: 226 232 240;
+    --border: 51 65 85;
+    --primary: 96 165 250;
+    --muted: 30 41 59;
+  }
+}
+
+* {
+  border-color: rgb(var(--border));
+}
+
+body {
+  background-color: rgb(var(--background));
+  color: rgb(var(--foreground));
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+    linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: center center;
+}
+.dark .hero-grid {
+  background-image:
+    linear-gradient(to right, #1e293b 1px, transparent 1px),
+    linear-gradient(to bottom, #1e293b 1px, transparent 1px);
+}
+
+.hero-grid-light {
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.15) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-scale-in {
+  animation: scale-in 0.2s ease-out;
+}
+
+@media print {
+  body { background: white !important; color: black !important; }
+  aside, header, nav, .print\:hidden, .no-print { display: none !important; }
+  main { padding: 0 !important; margin: 0 !important; }
+  .print-invoice {
+    box-shadow: none !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 0 !important;
+  }
+  .print-invoice * { color: black !important; background: white !important; }
+  .print-invoice .bg-gray-900 { background: #1a1a1a !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .print-invoice .bg-gray-900 * { color: white !important; }
+  .print-invoice table thead tr { background: #1a1a1a !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .print-invoice table thead tr th { color: white !important; }
+}
